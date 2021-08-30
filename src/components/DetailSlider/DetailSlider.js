@@ -10,7 +10,7 @@ import "./detailSlider.css";
 const DetailSlider = ({ movieId, toggleOpen, isOpen }) => {
   const [movieData, setMovieData] = useState({});
   const [trailerUrl, setTrailerUrl] = useState("");
-
+  console.log(movieData);
   useEffect(() => {
     return () => {
       toggleOpen(false);
