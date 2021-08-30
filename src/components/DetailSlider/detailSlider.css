@@ -34,11 +34,13 @@
 
 .slider__back-btn {
   color: white;
-  transition: transform 0.5s;
+  transform: scale(1.8);
+  margin: 10px;
 }
 
 .back-btn__reverse {
   transform: rotate(90deg);
+  transition: transform 0.5s;
 }
 
 .slider__genre-container {
@@ -64,4 +66,10 @@ label {
 
 .slider__details-box {
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 960px) {
+  .slider__body-open {
+    width: 100%;
+  }
 }
