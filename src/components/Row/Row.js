@@ -49,7 +49,9 @@ const Row = ({ title, fetchUrl, isLarge }) => {
             <img
               key={movie.id}
               onClick={() => {
-                toggleSlider(true);
+                if (!slider) {
+                  toggleSlider(true);
+                }
                 setMovieId(movies[index]?.id);
               }}
               className={`row__poster ${isLarge && "row__poster-large"}`}
