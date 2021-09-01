@@ -18,12 +18,15 @@ const DetailSlider = ({ movieId, toggleOpen, isOpen }) => {
     };
   }, []);
 
-  useEffect(async () => {
-    const request = await axios.get(
-      `/movie/${movieId}${requests.fetchMovieDetails}`
-    );
-    setMovieData(request.data);
-    return request;
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(
+        `/movie/${movieId}${requests.fetchMovieDetails}`
+      );
+      setMovieData(request.data);
+      return request;
+    }
+    fetchData();
   }, [movieId]);
 
   useEffect(() => {

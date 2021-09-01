@@ -1,7 +1,6 @@
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "../../axios";
-import DetailSlider from "../DetailSlider/DetailSlider";
 import "./row.css";
 
 export const imageUrl = "https://image.tmdb.org/t/p/original/";
