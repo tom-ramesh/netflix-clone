@@ -10,7 +10,7 @@ import "./detailSlider.css";
 const DetailSlider = ({ movieId, toggleOpen, isOpen }) => {
   const [movieData, setMovieData] = useState({});
   const [trailerUrl, setTrailerUrl] = useState("");
-  console.log(movieData);
+
   useEffect(() => {
     return () => {
       setMovieData({});
@@ -18,15 +18,12 @@ const DetailSlider = ({ movieId, toggleOpen, isOpen }) => {
     };
   }, []);
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(
-        `/movie/${movieId}${requests.fetchMovieDetails}`
-      );
-      setMovieData(request.data);
-      return request;
-    }
-    fetchData();
+  useEffect(async () => {
+    const request = await axios.get(
+      `/movie/${movieId}${requests.fetchMovieDetails}`
+    );
+    setMovieData(request.data);
+    return request;
   }, [movieId]);
 
   useEffect(() => {
