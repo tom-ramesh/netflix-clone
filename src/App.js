@@ -1,11 +1,16 @@
-import "./App.css";
-import wordings from "./wordings";
+import { useState } from "react";
 import Row from "./components/Row/Row";
 import Banner from "./components/Banner/Banner";
 import Navbar from "./components/Navbar/Navbar";
+import DetailSlider from "./components/DetailSlider/DetailSlider";
 import requests from "./requests";
+import wordings from "./wordings";
+import "./App.css";
 
 function App() {
+  const [id, setId] = useState("");
+  const [sliderOpen, toggleSlider] = useState(false);
+
   const rowProps = [
     {
       key: 1,
@@ -54,8 +59,18 @@ function App() {
       <Navbar />
       <Banner />
       {rowProps.map((props) => (
-        <Row {...props} />
+        <Row
+          {...props}
+          setId={setId}
+          toggleSlider={toggleSlider}
+          slider={sliderOpen}
+        />
       ))}
+      <DetailSlider
+        movieId={id}
+        isOpen={sliderOpen}
+        toggleOpen={toggleSlider}
+      />
     </div>
   );
 }

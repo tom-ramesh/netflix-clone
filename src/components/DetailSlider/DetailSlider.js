@@ -13,7 +13,6 @@ const DetailSlider = ({ movieId, toggleOpen, isOpen }) => {
 
   useEffect(() => {
     return () => {
-      toggleOpen(false);
       setMovieData({});
       setTrailerUrl("");
     };

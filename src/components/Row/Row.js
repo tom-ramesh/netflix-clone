@@ -1,16 +1,13 @@
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "../../axios";
-import DetailSlider from "../DetailSlider/DetailSlider";
 import "./row.css";
 
 export const imageUrl = "https://image.tmdb.org/t/p/original/";
 
-const Row = ({ title, fetchUrl, isLarge }) => {
+const Row = ({ title, fetchUrl, isLarge, setId, toggleSlider, slider }) => {
   const containerRef = useRef();
   const [movies, setMovies] = useState([]);
-  const [slider, toggleSlider] = useState(false);
-  const [movieId, setMovieId] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -27,13 +24,6 @@ const Row = ({ title, fetchUrl, isLarge }) => {
 
   return (
     <div className="row__container">
-      {slider && (
-        <DetailSlider
-          movieId={movieId}
-          toggleOpen={toggleSlider}
-          isOpen={slider}
-        />
-      )}
       <h2 className="row__title">{title}</h2>
       <div>
         <ChevronLeft
@@ -49,8 +39,10 @@ const Row = ({ title, fetchUrl, isLarge }) => {
             <img
               key={movie.id}
               onClick={() => {
-                toggleSlider(true);
-                setMovieId(movies[index]?.id);
+                if (!slider) {
+                  toggleSlider(true);
+                }
+                setId(movies[index]?.id);
               }}
               className={`row__poster ${isLarge && "row__poster-large"}`}
               src={`${imageUrl}${
